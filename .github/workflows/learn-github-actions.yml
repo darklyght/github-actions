@@ -6,8 +6,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '14'
-      - run: npm install -g bats
-      - run: bats -v
+      - name: Download Vivado
+        run:: |
+          mkdir -p /home/runner/.ssh
+          ssh-keyscan ${{ secrets.SSH_HOST }} >> /home/runner/.ssh/known_hosts
+          echo "${{ secrets.SSH_KEY }}" > /home/runner/.ssh/github_actions
+          chmod 600 /home/runner/.ssh/github_actions
+          scp -i /home/runner/.ssh/github_actions Xilinx_Unified_2022.2.tar.gz ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/${{ secrets.SSH_USER }}/Xilinx_Unified_2022.2_1014_8888.tar.gz
