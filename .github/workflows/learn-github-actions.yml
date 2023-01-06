@@ -2,7 +2,7 @@ name: learn-github-actions
 run-name: ${{ github.actor }} is learning GitHub Actions
 on: [push]
 jobs:
-  check-bats-version:
+  installing-vivado:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -12,4 +12,4 @@ jobs:
           ssh-keyscan ${{ secrets.SSH_HOST }} >> /home/runner/.ssh/known_hosts
           echo "${{ secrets.SSH_KEY }}" > /home/runner/.ssh/github_actions
           chmod 600 /home/runner/.ssh/github_actions
-          scp -i /home/runner/.ssh/github_actions Xilinx_Unified_2022.2.tar.gz ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/${{ secrets.SSH_USER }}/Xilinx_Unified_2022.2_1014_8888.tar.gz
+          scp -i /home/runner/.ssh/github_actions ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/${{ secrets.SSH_USER }}/Xilinx_Unified_2022.2_1014_8888.tar.gz Xilinx_Unified_2022.2.tar.gz
