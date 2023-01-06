@@ -15,3 +15,5 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           script: |
             whoami
+            cd /
+            ls -al
