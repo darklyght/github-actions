@@ -42,4 +42,5 @@ jobs:
           pwd && ls
           ls test
           make -v
-          git status
+          $GITHUB_WORKSPACE/oss-cad-suite/bin/verilator --version
+          $GITHUB_WORKSPACE/oss-cad-suite/bin/iverilog 
