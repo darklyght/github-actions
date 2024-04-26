@@ -38,3 +38,4 @@ jobs:
           tar xzvf oss-cad-suite-linux-x64-20240426.tgz
           pwd && ls
           make -v
+          make -C $GITHUB_WORKSPACE
