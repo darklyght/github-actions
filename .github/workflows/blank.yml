@@ -23,7 +23,10 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          path: test
 
       # Runs a single command using the runners shell
       # - name: Install sbt
@@ -37,5 +40,6 @@ jobs:
           wget https://github.com/YosysHQ/oss-cad-suite-build/releases/latest/download/oss-cad-suite-linux-x64-20240426.tgz
           tar xzvf oss-cad-suite-linux-x64-20240426.tgz
           pwd && ls
+          ls test
           make -v
           git status
