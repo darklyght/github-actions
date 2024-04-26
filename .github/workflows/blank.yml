@@ -29,10 +29,11 @@ jobs:
           path: test
 
       # Runs a single command using the runners shell
-      # - name: Install sbt
-      #   run: |
-      #     curl -fL https://github.com/coursier/coursier/releases/latest/download/cs-x86_64-pc-linux.gz | gzip -d > cs && chmod +x cs && ./cs setup -y
-      #     sbt --script-version
+      - name: Install sbt
+        run: |
+          curl -fL https://github.com/coursier/coursier/releases/latest/download/cs-x86_64-pc-linux.gz | gzip -d > cs && chmod +x cs && ./cs setup -y
+          sbt --script-version
+          which sbt
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
